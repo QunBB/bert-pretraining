@@ -1,3 +1,14 @@
+- [简介](#简介)
+- [特性](#特性)
+- [关键参数](#关键参数)
+- [快速开始](#快速开始)
+	- [tensorflow版本](#tensorflow版本)
+	- [torch版本](#torch版本)
+- [要点](#要点)
+	- [中文全词MASK](#中文全词mask)
+	- [tensorflow-estimator](#tensorflow-estimator)
+	- [torch-tfrecord](#torch-tfrecord)
+
 # 简介
 
 自谷歌2018年发表的《BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding》，彻底摒弃了LSTM等循环网络，取得了惊人的成果。到如今，预训练语言模型（Pre-trained Language Models）已经成为自然语言处理领域中非常重要的基础技术了，在许多任务中都取得了state-of-the-art的效果，这都离不开BERT模型，及其衍生的RoBERTa等。
@@ -219,7 +230,7 @@ python run_pretraining.py \
 
 使用[MirroredStrategy](https://www.tensorflow.org/guide/distributed_training#mirroredstrategy)来实现多GPU训练
 
-## torch
+## torch-tfrecord
 
 使用了[tfrecord](https://github.com/vahidk/tfrecord)作为存储介质，解决了内存资源问题，并且优化了`num_workers > 0`场景下的问题，包括：
 
