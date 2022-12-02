@@ -48,7 +48,11 @@
 | model_name                 | 使用的模型名称，该参数仅针对torch版本。https://huggingface.co/models | 字符串 | bert-base-chinese       |
 | cache_dir                  | 模型下载的缓存目录，该参数仅针对torch版本                    | 字符串 | ../cache/               |
 
-其他参数见config.py
+其他参数见:
+
+[config.py - tensorflow](https://github.com/QunBB/bert-pretraining/blob/main/tf/config.py)
+
+[config.py - torch](https://github.com/QunBB/bert-pretraining/blob/main/pt/config.py)
 
 # 快速开始
 
@@ -195,7 +199,7 @@ python run_pretraining.py \
 
 - **微调**
 
-见run_finetuning.py
+见[run_finetuning.py](https://github.com/QunBB/bert-pretraining/blob/main/pt/run_finetuning.py)
 
 # 要点
 
