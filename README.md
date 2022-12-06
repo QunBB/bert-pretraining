@@ -1,5 +1,6 @@
 - [简介](#简介)
 - [特性](#特性)
+- [Requirements](#requirements)
 - [关键参数](#关键参数)
 - [快速开始](#快速开始)
 	- [tensorflow版本](#tensorflow版本)
@@ -23,6 +24,28 @@
 - 支持停用词不参与MASK
 - 支持单机多卡的预训练
 - 使用tfrecord作为存储介质，支持低内存资源下的超大语料使用
+
+# Requirements
+- **Python 3.x**
+
+- **tensorflow**
+```
+jieba
+tensorflow-gpu==1.15.5
+# tensorflow==1.15.5
+```
+或者
+
+- **torch**
+
+```
+crc32c
+jieba
+transformers
+torch==1.9
+huggingface-hub==0.4.0
+
+```
 
 # 关键参数
 
@@ -72,9 +95,9 @@
 - **拷贝仓库代码**
 
 ```sh
-git clone
+git clone https://github.com/QunBB/bert-pretraining.git
 
-cd DeepLearning/NLP/masked_language_model/tf
+cd tf
 
 pip install -r requirements.txt
 ```
@@ -86,7 +109,7 @@ python create_pretraining_data.py \
 --input_files=../data/example_sop.txt \
 --output_tfrecord_dir=../data/train_tfrecord/ \
 --do_whole_word_mask_cn=true \
---ngram=4 \
+--ngram=3 \
 --vocab_file=../data/bert/vocab.txt
 ```
 
@@ -97,7 +120,7 @@ python create_pretraining_data.py \
 --input_files=../data/example_sop.txt \
 --output_tfrecord_dir=../data/eval_tfrecord/ \
 --do_whole_word_mask_cn=true \
---ngram=4 \
+--ngram=3 \
 --vocab_file=../data/bert/vocab.txt
 ```
 
@@ -153,9 +176,9 @@ python run_pretraining_sess.py \
 - **拷贝仓库代码**
 
 ```sh
-git clone
+git clone https://github.com/QunBB/bert-pretraining.git
 
-cd DeepLearning/NLP/masked_language_model/pt
+cd pt
 
 pip install -r requirements.txt
 ```
@@ -167,7 +190,7 @@ python create_pretraining_data.py \
 --input_files=../data/example_sop.txt \
 --output_tfrecord_dir=../data/pt_train_tfrecord/ \
 --do_whole_word_mask_cn=true \
---ngram=4 \
+--ngram=3 \
 --model_name=bert-base-chinese \
 --cache_dir=../cache/
 ```
@@ -179,7 +202,7 @@ python create_pretraining_data.py \
 --input_files=../data/example_sop.txt \
 --output_tfrecord_dir=../data/pt_eval_tfrecord/ \
 --do_whole_word_mask_cn=true \
---ngram=4 \
+--ngram=3 \
 --model_name=bert-base-chinese \
 --cache_dir=../cache/
 ```
@@ -200,12 +223,12 @@ python run_pretraining.py \
 
 ```
 <cache_dir>/<model_name>-pretrained
-	pytorch_model.bin
-	config.json
-	tokenizer.json
-	tokenizer_config.json
-	vocab.txt
-	README.md
+  pytorch_model.bin
+  config.json
+  tokenizer.json
+  tokenizer_config.json
+  vocab.txt
+  README.md
 ```
 
 - **微调**
